@@ -1,23 +1,28 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CreateRoleUserEnum } from "../enums/create-role-user.enum";
 
 @Entity()
 export class User {
 @PrimaryGeneratedColumn('uuid')
 id: string;
 
-@Column()
+@Column({nullable:true})
 nom_user: string;
-@Column({unique:true})
-password:string;
+
+@Column()
+password: string;
 
 @Column({unique:true})
 email:string;
 
-@Column()
+@Column({type: 'enum', enum: CreateRoleUserEnum, default: CreateRoleUserEnum.user})
 role:string;
 
-@Column()
+@Column({nullable:true})
 numero_tel:string;
+
+@Column({nullable:true})
+patientId:string
 
 @Column()
 salt:string;

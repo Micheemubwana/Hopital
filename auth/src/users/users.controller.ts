@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { NatsStreamingContext } from '@nestjs-plugins/nestjs-nats-streaming-transport';
+import { Ctx, EventPattern, Payload } from '@nestjs/microservices';
 
 @Controller('users')
 export class UsersController {
@@ -31,4 +33,30 @@ export class UsersController {
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }
+
+  @Post("login")
+  login(@Body("email") email: string, @Body("password") password: string){
+    return this. usersService.login(email, password);
+  }
+
+  @Get("auth/:id/:email")
+  getOne(@Param("id") id:string){
+    return this.usersService.getOne(id);
+  }
+
+  @EventPattern('patient-created')
+  createPatient(
+    @Payload() data: any,
+    @Ctx() context: NatsStreamingContext,
+  ) {
+    console.log(`received message: ${JSON.stringify(data)}`);
+    try {
+      this.usersService.createPatient(CreateUserDto)
+      context.message.ack();
+    } catch (error) {
+      console.log(error);
+      context.message.ack();
+    }
+  }
+
 }
