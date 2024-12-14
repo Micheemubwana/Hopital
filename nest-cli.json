@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "my-nest-jwt-package": {
+      "type": "library",
+      "root": "libs/my-nest-jwt-package",
+      "entryFile": "index",
+      "sourceRoot": "libs/my-nest-jwt-package/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/my-nest-jwt-package/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true
+  }
+}
