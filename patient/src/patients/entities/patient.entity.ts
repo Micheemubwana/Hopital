@@ -2,34 +2,33 @@ import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedCol
 
 @Entity()
 export class Patient {
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-@PrimaryGeneratedColumn('uuid')
-id: string;
-@Column()
-nom : string;
-    
-@Column()  
-email : string;
+    @Column()
+    nom : string;
+        
+    @Column()  
+    email : string;
 
- @Column()   
-dateDeNaiss : string
+    @Column()   
+    dateDeNaiss : string
 
-@Column()    
-postNom: string
+    @Column()    
+    postNom: string
 
-@Column()   
-numero_tel: string;
+    @Column()   
+    numero_tel: string;
 
-@Column()   
-genre: string
+    @Column()   
+    genre: string
 
-@CreateDateColumn()
-createdAt: Date;
+    @CreateDateColumn()
+    createdAt: Date;
 
-@UpdateDateColumn()
-updatedAt: Date;
+    @UpdateDateColumn()
+    updatedAt: Date;
 
-@DeleteDateColumn()
-deletedDate: Date;
-    
+    @DeleteDateColumn()
+    deletedDate: Date;
 }

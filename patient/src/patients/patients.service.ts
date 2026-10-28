@@ -35,19 +35,28 @@ export class PatientsService {
     
   }
 
-  findAll() {
-    return `This action returns all patients`;
+  async findAll() {
+    return await this.patientRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} patient`;
+  async findOne(id: string) {
+    const patient = await this.patientRepository.createQueryBuilder('patient')
+                    .where('patient.id =:id', {id: id})
+                    .getOne();
+    if(!patient)
+      throw new HttpException(`Ce patient n'existe pas encore dans le système !`, HttpStatus.NOT_FOUND);
+    return patient;
   }
 
-  update(id: number, updatePatientDto: UpdatePatientDto) {
-    return `This action updates a #${id} patient`;
+  async update(id: string, updatePatientDto: UpdatePatientDto) {
+    await this.findOne(id);
+    await this.patientRepository.update(id, updatePatientDto);
+    return await this.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} patient`;
+  async remove(id: string) {
+    const patient = await this.findOne(id);
+    await this.patientRepository.remove(patient);
+    return patient;
   }
 }

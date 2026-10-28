@@ -1,0 +1,40 @@
+import { Patient } from '../entities/patient.entity';
+
+export const patientsDataMock: Patient[] = [
+                                              {
+                                                id: 'd1f5e8e0-7f4c-4d39-bd5c-123456789abc',
+                                                nom: 'Doe',
+                                                email: 'john.doe@example.com',
+                                                dateDeNaiss: '1990-05-20',
+                                                postNom: 'John',
+                                                numero_tel: '+243810000000',
+                                                genre: 'M',
+                                                createdAt: new Date('2023-01-01T10:00:00Z'),
+                                                updatedAt: new Date('2023-01-05T15:30:00Z'),
+                                                deletedDate: null,
+                                              },
+                                              {
+                                                id: 'a3e4c5d6-8a7b-4c20-a8f9-987654321def',
+                                                nom: 'Smith',
+                                                email: 'jane.smith@example.com',
+                                                dateDeNaiss: '1985-12-15',
+                                                postNom: 'Jane',
+                                                numero_tel: '+243820000000',
+                                                genre: 'F',
+                                                createdAt: new Date('2023-02-10T09:20:00Z'),
+                                                updatedAt: new Date('2023-02-12T12:45:00Z'),
+                                                deletedDate: null,
+                                              },
+                                              {
+                                                id: 'b9f8a7c6-4d3e-2b1a-9f8e-556677889900',
+                                                nom: 'Test',
+                                                email: 'test.user@example.com',
+                                                dateDeNaiss: '2000-01-01',
+                                                postNom: 'User',
+                                                numero_tel: '+243830000000',
+                                                genre: 'M',
+                                                createdAt: new Date('2023-03-20T08:10:00Z'),
+                                                updatedAt: new Date('2023-03-25T17:00:00Z'),
+                                                deletedDate: new Date('2023-04-01T11:00:00Z'),
+                                              },
+                                            ];
